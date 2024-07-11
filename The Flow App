@@ -11,3 +11,32 @@ struct Item {
   int quantity;
 };
 
+// Function to display the current inventory
+void displayInventory(const vector<Item>& items) {
+  cout << "Inventory:" << endl;
+  for (const Item& item : items) {
+    cout << "  - " << item.name << " (" << item.price << "): " << item.quantity << endl;
+  }
+}
+
+// Function to add a new item to the inventory
+void addItem(vector<Item>& items) {
+  string name;
+  double price;
+  int quantity;
+
+  cout << "Enter item name: ";
+  getline(cin, name);
+  cout << "Enter price: ";
+  cin >> price;
+  cout << "Enter quantity: ";
+  cin >> quantity;
+  cin.ignore(); // Clear input buffer
+
+  items.push_back({name, price, quantity});
+
+  cout << "Item added successfully!" << endl;
+}
+
+
+
