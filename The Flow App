@@ -1,1 +1,13 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Structure to represent an item in the inventory
+struct Item {
+  string name;
+  double price;
+  int quantity;
+};
 
