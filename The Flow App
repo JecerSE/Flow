@@ -38,5 +38,69 @@ void addItem(vector<Item>& items) {
   cout << "Item added successfully!" << endl;
 }
 
+// Function to simulate a simple sale
+void makeSale(vector<Item>& items) {
+  string itemName;
+  int quantity;
 
+  cout << "Enter item name for sale: ";
+  getline(cin, itemName);
+  cout << "Enter quantity sold: ";
+  cin >> quantity;
+  cin.ignore();
+
+  bool found = false;
+  for (Item& item : items) {
+    if (item.name == itemName) {
+      if (item.quantity >= quantity) {
+        item.quantity -= quantity;
+        cout << "Sale successful!" << endl;
+      } else {
+        cout << "Insufficient stock for " << itemName << endl;
+      }
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    cout << "Item not found in inventory." << endl;
+  }
+}
+
+int main() {
+  vector<Item> inventory;
+
+  int choice;
+
+  while (true) {
+    cout << "\nPOS Inventory System" << endl;
+    cout << "1. Display Inventory" << endl;
+    cout << "2. Add Item" << endl;
+    cout << "3. Make Sale" << endl;
+    cout << "4. Exit" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+    cin.ignore();
+
+    switch (choice) {
+      case 1:
+        displayInventory(inventory);
+        break;
+      case 2:
+        addItem(inventory);
+        break;
+      case 3:
+        makeSale(inventory);
+        break;
+      case 4:
+        cout << "Exiting..." << endl;
+        return 0;
+      default:
+        cout << "Invalid choice." << endl;
+    }
+  }
+
+  return 0;
+}
 
